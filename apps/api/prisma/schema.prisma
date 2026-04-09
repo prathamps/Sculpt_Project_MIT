@@ -1,0 +1,158 @@
+// Prisma Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url        = env("DATABASE_URL")  
+  directUrl  = env("DIRECT_URL")  
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum ProjectRole {
+  OWNER
+  MEMBER
+  EDITOR
+  VIEWER
+}
+
+enum Plan {
+  FREE
+  PRO
+}
+
+model User {
+  id            String          @id @default(cuid())
+  email         String          @unique
+  name          String?
+  password      String
+  role          UserRole        @default(USER)
+  memberships   ProjectMember[]
+  notifications Notification[]
+  messages      Message[]
+  comments      Comment[]
+  commentLikes  CommentLike[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  subscription  Subscription?
+}
+
+model Project {
+  id         String          @id @default(cuid())
+  name       String
+  members    ProjectMember[]
+  images     Image[]
+  messages   Message[]
+  shareLinks ShareLink[]
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+}
+
+model ProjectMember {
+  id        String      @id @default(cuid())
+  projectId String
+  project   Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User        @relation(fields: [userId], references: [id])
+  role      ProjectRole
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  @@unique([projectId, userId])
+}
+
+model Image {
+  id          String         @id @default(cuid())
+  name        String
+  projectId   String
+  project     Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  versions    ImageVersion[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+model ImageVersion {
+  id          String    @id @default(cuid())
+  url         String
+  versionName String    @default("Version 1")
+  versionNumber Int     @default(1)
+  imageId     String
+  image       Image     @relation(fields: [imageId], references: [id], onDelete: Cascade)
+  annotations Json[]
+  comments    Comment[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Comment {
+  id             String        @id @default(cuid())
+  content        String
+  imageVersionId String
+  imageVersion   ImageVersion  @relation(fields: [imageVersionId], references: [id], onDelete: Cascade)
+  userId         String
+  user           User          @relation(fields: [userId], references: [id])
+  parentId       String?       @map("parent_id")
+  parent         Comment?      @relation("CommentToComment", fields: [parentId], references: [id], onDelete: Cascade)
+  replies        Comment[]     @relation("CommentToComment")
+  likes          CommentLike[]
+  annotation     Json?         // Store annotation data as JSON
+  resolved       Boolean       @default(false)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model CommentLike {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  commentId String
+  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, commentId])
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  content   String
+  read      Boolean  @default(false)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Subscription {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  user             User     @relation(fields: [userId], references: [id])
+  plan             Plan     @default(FREE)
+  stripeCustomerId String?
+  status           String // e.g., 'active', 'canceled'
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model ShareLink {
+  id        String      @id @default(cuid())
+  token     String      @unique
+  projectId String
+  project   Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  role      ProjectRole
+  createdAt DateTime    @default(now())
+}
