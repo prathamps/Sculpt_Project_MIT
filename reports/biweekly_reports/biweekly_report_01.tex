@@ -1,0 +1,161 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{ifthen}
+\usepackage{setspace}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\mitlogo}{\IfFileExists{mit-logo.png}{\includegraphics[width=15cm]{mit-logo.png}}{\fbox{\parbox[c][1.2cm][c]{1.8cm}{\centering MIT}}}}
+\newcommand{\fullrow}[1]{\multicolumn{4}{|>{\raggedright\arraybackslash}p{\dimexpr\textwidth-2\tabcolsep-2\arrayrulewidth\relax}|}{#1} \\ \hline}
+\begin{document}
+
+% =========================
+% Page 1: Cover Page
+% =========================
+\begin{center}
+  \vspace*{1.2cm}
+  \mitlogo
+
+ 
+
+  \vspace{1.1cm}
+  {\large\bfseries MCA 5291 PROJECT WORK \& PRACTICE SCHOOL}
+
+  \vspace{1.2cm}
+  {\LARGE\bfseries Sculpt: Real-time Collaborative Visual\\Feedback Platform}
+
+  \vspace{1.2cm}
+  {\Large Biweekly Report}
+
+  \vspace{0.6cm}
+  {\bfseries SUBMITTED BY}
+
+  \vspace{0.35cm}
+  {\Large\bfseries Pratham P S}\\
+  {\Large\bfseries (240970088)}
+
+  \vspace{1.1cm}
+  {\itshape Under the Guidance of:}
+
+  \vspace{0.35cm}
+  {\large\bfseries Dr. Sandhya Parasnath Dubey}\\
+  {\large Assistant Professor}\\
+  {\large School of Computer Engineering}\\
+  {\large Manipal Institute of Technology, MAHE, Manipal}
+
+  \vfill
+  {\Large\bfseries DEPARTMENT OF DATA SCIENCE AND COMPUTER APPLICATIONS}
+\end{center}
+
+\newpage
+
+% =========================
+% Page 2: Project Details
+% =========================
+\begin{center}{\Large\bfseries Project Details}\end{center}
+\vspace{0.25cm}
+\begin{tabularx}{\textwidth}{|p{0.15\textwidth}|X|p{0.13\textwidth}|X|}\hline
+\fullrow{\itshape Student Details}
+\fullrow{\bfseries Student Name}
+Register Number & 240970088 & Section / Roll No. & MCA \\ \hline
+Email Address & pratham11.mitmpl2024@learner.manipal.edu & Phone No (M) & 9480225348 \\ \hline
+\fullrow{\itshape Project Details}
+\fullrow{\bfseries Project Title}
+Project Duration & 6 Months (12 Biweekly Reports) & Start Date & 01/02/2026 \\ \hline
+\fullrow{\itshape Organization Details}
+\fullrow{\bfseries Organization Name}
+\fullrow{Academic Project (MIT, MAHE)}
+\fullrow{Project Repository: Sculpt Monorepo}
+\fullrow{\itshape Supervisor Details}
+\fullrow{\bfseries Supervisor Name}
+\fullrow{Dr. Sandhya Parasnath Dubey}
+\fullrow{School of Computer Engineering, MIT, MAHE, Manipal - 576104}
+Email address & sandhya.dubey@manipal.edu & Phone No (M) & 9886542135 \\ \hline
+\fullrow{\itshape Internal Guide Details}
+\fullrow{\bfseries Faculty Name}
+\fullrow{Dr. Sandhya Parasnath Dubey}
+\fullrow{School of Computer Engineering, MIT, MAHE, Manipal - 576104}
+\fullrow{Email address: sandhya.dubey@manipal.edu}
+\fullrow{\rule{0pt}{0.8cm}}
+\fullrow{\rule{0pt}{0.8cm}}
+\fullrow{\rule{0pt}{0.8cm}}
+\end{tabularx}
+
+\newpage
+
+% =========================
+% Page 3: Activity Log (1-6)
+% =========================
+
+\vspace{0.25cm}
+\begin{center}{\large\bfseries Activity Log (Days 1-6)}\end{center}
+\begin{tabular}{|p{0.06\textwidth}|p{0.10\textwidth}|p{0.14\textwidth}|p{0.19\textwidth}|p{0.39\textwidth}|}\hline
+\centering\textbf{Sl. No.} & \centering\textbf{Date} & \centering\textbf{Project Activity} & \centering\textbf{Description} & \centering\textbf{Comments} \tabularnewline\hline
+1 & 01/02/26 & Project Setup & Initialized repository structure and project scope. &
+Summary of the work done:\newline
+Set clear boundaries for apps/web and apps/api modules. \\ \hline
+2 & 02/02/26 & Environment & Configured Node, pnpm workflow and local scripts. &
+Summary of the work done:\newline
+Established working local setup for daily development. \\ \hline
+3 & 03/02/26 & API Bootstrapping & Created Express server entry with base middleware. &
+Summary of the work done:\newline
+Prepared routing foundation for auth, users and projects. \\ \hline
+4 & 04/02/26 & Routing & Mounted initial route groups in API. &
+Summary of the work done:\newline
+Connected auth, project, image, comment and admin route files. \\ \hline
+5 & 05/02/26 & Database & Defined initial Prisma schema models and enums. &
+Summary of the work done:\newline
+Set up User, Project, Image and membership entities. \\ \hline
+6 & 06/02/26 & Migrations & Applied initial migration flow for database creation. &
+Summary of the work done:\newline
+Established reproducible schema setup for development. \\ \hline
+\end{tabular}
+
+\newpage
+
+% =========================
+% Page 4: Activity Log (7-15) + Signatures
+% =========================
+\begin{center}{\large\bfseries Activity Log (Days 7-15)}\end{center}
+\begin{tabular}{|p{0.06\textwidth}|p{0.10\textwidth}|p{0.14\textwidth}|p{0.19\textwidth}|p{0.39\textwidth}|}\hline
+7 & 07/02/26 & Frontend Bootstrapping & Set up Next.js app shell and route layout. &
+Summary of the work done:\newline
+Enabled base navigation paths and page structure. \\ \hline
+8 & 08/02/26 & Authentication UI & Built login and register pages with form handling. &
+Summary of the work done:\newline
+Connected form submission to API endpoints. \\ \hline
+9 & 09/02/26 & Auth Context & Implemented AuthContext for session state. &
+Summary of the work done:\newline
+Enabled redirect logic for protected routes. \\ \hline
+10 & 10/02/26 & Dashboard Base & Created initial dashboard layout and loading states. &
+Summary of the work done:\newline
+Prepared project list area and empty-state UX. \\ \hline
+11 & 11/02/26 & Shared UI & Integrated reusable UI components and modal primitives. &
+Summary of the work done:\newline
+Standardized buttons, dialogs and cards across pages. \\ \hline
+12 & 12/02/26 & Project Types & Added shared TypeScript interfaces for core entities. &
+Summary of the work done:\newline
+Reduced payload mismatch between API and frontend. \\ \hline
+13 & 13/02/26 & Project Modal & Built create-project modal and API submission flow. &
+Summary of the work done:\newline
+Enabled first end-to-end project creation path. \\ \hline
+14 & 14/02/26 & Validation & Ran first pass of auth and dashboard flow testing. &
+Summary of the work done:\newline
+Confirmed register/login to dashboard journey works. \\ \hline
+15 & 15/02/26 & Sprint Closure & Locked first milestone with working app skeleton. &
+Summary of the work done:\newline
+Foundation completed for feature implementation phase. \\ \hline
+\end{tabular}
+\vspace{0.2cm}
+\begin{tabular}{|p{0.48\textwidth}|p{0.48\textwidth}|}\hline
+Signature of Student & Signature of External Guide \\ \hline
+\vspace{0.2cm}\includegraphics[height=2cm]{signature.png}\vspace{0.2cm} & \rule{0pt}{2.6cm} \\ \hline
+\end{tabular}
+
+\end{document}
+

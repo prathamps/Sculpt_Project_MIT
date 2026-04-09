@@ -1,0 +1,161 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{ifthen}
+\usepackage{setspace}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\mitlogo}{\IfFileExists{mit-logo.png}{\includegraphics[width=15cm]{mit-logo.png}}{\fbox{\parbox[c][1.2cm][c]{1.8cm}{\centering MIT}}}}
+\newcommand{\fullrow}[1]{\multicolumn{4}{|>{\raggedright\arraybackslash}p{\dimexpr\textwidth-2\tabcolsep-2\arrayrulewidth\relax}|}{#1} \\ \hline}
+\begin{document}
+
+% =========================
+% Page 1: Cover Page
+% =========================
+\begin{center}
+  \vspace*{1.2cm}
+  \mitlogo
+
+ 
+
+  \vspace{1.1cm}
+  {\large\bfseries MCA 5291 PROJECT WORK \& PRACTICE SCHOOL}
+
+  \vspace{1.2cm}
+  {\LARGE\bfseries Sculpt: Real-time Collaborative Visual\\Feedback Platform}
+
+  \vspace{1.2cm}
+  {\Large Biweekly Report}
+
+  \vspace{0.6cm}
+  {\bfseries SUBMITTED BY}
+
+  \vspace{0.35cm}
+  {\Large\bfseries Pratham P S}\\
+  {\Large\bfseries (240970088)}
+
+  \vspace{1.1cm}
+  {\itshape Under the Guidance of:}
+
+  \vspace{0.35cm}
+  {\large\bfseries Dr. Sandhya Parasnath Dubey}\\
+  {\large Assistant Professor}\\
+  {\large School of Computer Engineering}\\
+  {\large Manipal Institute of Technology, MAHE, Manipal}
+
+  \vfill
+  {\Large\bfseries DEPARTMENT OF DATA SCIENCE AND COMPUTER APPLICATIONS}
+\end{center}
+
+\newpage
+
+% =========================
+% Page 2: Project Details
+% =========================
+\begin{center}{\Large\bfseries Project Details}\end{center}
+\vspace{0.25cm}
+\begin{tabularx}{\textwidth}{|p{0.15\textwidth}|X|p{0.13\textwidth}|X|}\hline
+\fullrow{\itshape Student Details}
+\fullrow{\bfseries Student Name}
+Register Number & 240970088 & Section / Roll No. & MCA \\ \hline
+Email Address & pratham11.mitmpl2024@learner.manipal.edu & Phone No (M) & 9480225348 \\ \hline
+\fullrow{\itshape Project Details}
+\fullrow{\bfseries Project Title}
+Project Duration & 6 Months (12 Biweekly Reports) & Start Date & 01/02/2026 \\ \hline
+\fullrow{\itshape Organization Details}
+\fullrow{\bfseries Organization Name}
+\fullrow{Academic Project (MIT, MAHE)}
+\fullrow{Project Repository: Sculpt Monorepo}
+\fullrow{\itshape Supervisor Details}
+\fullrow{\bfseries Supervisor Name}
+\fullrow{Dr. Sandhya Parasnath Dubey}
+\fullrow{School of Computer Engineering, MIT, MAHE, Manipal - 576104}
+Email address & sandhya.dubey@manipal.edu & Phone No (M) & 9886542135 \\ \hline
+\fullrow{\itshape Internal Guide Details}
+\fullrow{\bfseries Faculty Name}
+\fullrow{Dr. Sandhya Parasnath Dubey}
+\fullrow{School of Computer Engineering, MIT, MAHE, Manipal - 576104}
+\fullrow{Email address: sandhya.dubey@manipal.edu}
+\fullrow{\rule{0pt}{0.8cm}}
+\fullrow{\rule{0pt}{0.8cm}}
+\fullrow{\rule{0pt}{0.8cm}}
+\end{tabularx}
+
+\newpage
+
+% =========================
+% Page 3: Activity Log (1-6)
+% =========================
+{\color{red}\small\textbf{Note (delete after reading):} You can compile your report based on the company policies.}
+\vspace{0.25cm}
+\begin{center}{\large\bfseries Activity Log (Days 1-6)}\end{center}
+\begin{tabular}{|p{0.06\textwidth}|p{0.10\textwidth}|p{0.14\textwidth}|p{0.19\textwidth}|p{0.39\textwidth}|}\hline
+\centering\textbf{Sl. No.} & \centering\textbf{Date} & \centering\textbf{Project Activity} & \centering\textbf{Description} & \centering\textbf{Comments} \tabularnewline\hline
+1 & 16/02/26 & Auth Backend & Implemented register, login and logout controller logic. &
+Summary of the work done:\newline
+Connected JWT issuance and cookie handling. \\ \hline
+2 & 17/02/26 & Auth Middleware & Wired JWT authentication middleware to protected routes. &
+Summary of the work done:\newline
+Secured project and image endpoints. \\ \hline
+3 & 18/02/26 & Profile API & Added authenticated user profile endpoint. &
+Summary of the work done:\newline
+Enabled frontend to restore signed-in session. \\ \hline
+4 & 19/02/26 & Frontend Auth & Connected login/register pages to live API responses. &
+Summary of the work done:\newline
+Handled success and failure states in UI. \\ \hline
+5 & 20/02/26 & Session Handling & Implemented credentialed fetch patterns globally. &
+Summary of the work done:\newline
+Maintained cookie-based session consistency. \\ \hline
+6 & 21/02/26 & Header Actions & Added logout action in main app header. &
+Summary of the work done:\newline
+Completed full session start and session end flow. \\ \hline
+\end{tabular}
+
+\newpage
+
+% =========================
+% Page 4: Activity Log (7-15) + Signatures
+% =========================
+\begin{center}{\large\bfseries Activity Log (Days 7-15)}\end{center}
+\begin{tabular}{|p{0.06\textwidth}|p{0.10\textwidth}|p{0.14\textwidth}|p{0.19\textwidth}|p{0.39\textwidth}|}\hline
+7 & 22/02/26 & Dashboard Guard & Enforced route guard for unauthenticated access. &
+Summary of the work done:\newline
+Redirected unauthorized users to login page. \\ \hline
+8 & 23/02/26 & Error UX & Improved auth error messaging and feedback states. &
+Summary of the work done:\newline
+Made invalid credentials and API failures clearer. \\ \hline
+9 & 24/02/26 & Admin Auth & Implemented separate admin authentication path. &
+Summary of the work done:\newline
+Kept admin token flow isolated from normal users. \\ \hline
+10 & 25/02/26 & Admin Login UI & Built admin login page and redirect behavior. &
+Summary of the work done:\newline
+Linked admin auth context with admin routes. \\ \hline
+11 & 26/02/26 & Auth Testing & Executed endpoint tests for login/register/logout/profile. &
+Summary of the work done:\newline
+Validated expected HTTP responses for each case. \\ \hline
+12 & 27/02/26 & Type Cleanup & Aligned auth response types in frontend context. &
+Summary of the work done:\newline
+Reduced runtime casting and improved compile safety. \\ \hline
+13 & 28/02/26 & Cookie Checks & Validated cookie persistence across route changes. &
+Summary of the work done:\newline
+Confirmed sessions survive page refresh scenarios. \\ \hline
+14 & 01/03/26 & Bug Fix & Resolved early auth flow issues found in testing. &
+Summary of the work done:\newline
+Stabilized first complete authentication cycle. \\ \hline
+15 & 02/03/26 & Sprint Closure & Closed authentication milestone with working flows. &
+Summary of the work done:\newline
+Ready to build project management features next. \\ \hline
+\end{tabular}
+\vspace{0.2cm}
+\begin{tabular}{|p{0.48\textwidth}|p{0.48\textwidth}|}\hline
+Signature of Student & Signature of External Guide \\ \hline
+\vspace{0.2cm}\includegraphics[height=2cm]{signature.png}\vspace{0.2cm} & \rule{0pt}{2.6cm} \\ \hline
+\end{tabular}
+
+\end{document}
+

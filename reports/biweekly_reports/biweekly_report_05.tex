@@ -1,0 +1,161 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{ifthen}
+\usepackage{setspace}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\mitlogo}{\IfFileExists{mit-logo.png}{\includegraphics[width=15cm]{mit-logo.png}}{\fbox{\parbox[c][1.2cm][c]{1.8cm}{\centering MIT}}}}
+\newcommand{\fullrow}[1]{\multicolumn{4}{|>{\raggedright\arraybackslash}p{\dimexpr\textwidth-2\tabcolsep-2\arrayrulewidth\relax}|}{#1} \\ \hline}
+\begin{document}
+
+% =========================
+% Page 1: Cover Page
+% =========================
+\begin{center}
+  \vspace*{1.2cm}
+  \mitlogo
+
+ 
+
+  \vspace{1.1cm}
+  {\large\bfseries MCA 5291 PROJECT WORK \& PRACTICE SCHOOL}
+
+  \vspace{1.2cm}
+  {\LARGE\bfseries Sculpt: Real-time Collaborative Visual\\Feedback Platform}
+
+  \vspace{1.2cm}
+  {\Large Biweekly Report}
+
+  \vspace{0.6cm}
+  {\bfseries SUBMITTED BY}
+
+  \vspace{0.35cm}
+  {\Large\bfseries Pratham P S}\\
+  {\Large\bfseries (240970088)}
+
+  \vspace{1.1cm}
+  {\itshape Under the Guidance of:}
+
+  \vspace{0.35cm}
+  {\large\bfseries Dr. Sandhya Parasnath Dubey}\\
+  {\large Assistant Professor}\\
+  {\large School of Computer Engineering}\\
+  {\large Manipal Institute of Technology, MAHE, Manipal}
+
+  \vfill
+  {\Large\bfseries DEPARTMENT OF DATA SCIENCE AND COMPUTER APPLICATIONS}
+\end{center}
+
+\newpage
+
+% =========================
+% Page 2: Project Details
+% =========================
+\begin{center}{\Large\bfseries Project Details}\end{center}
+\vspace{0.25cm}
+\begin{tabularx}{\textwidth}{|p{0.15\textwidth}|X|p{0.13\textwidth}|X|}\hline
+\fullrow{\itshape Student Details}
+\fullrow{\bfseries Student Name}
+Register Number & 240970088 & Section / Roll No. & MCA \\ \hline
+Email Address & pratham11.mitmpl2024@learner.manipal.edu & Phone No (M) & 9480225348 \\ \hline
+\fullrow{\itshape Project Details}
+\fullrow{\bfseries Project Title}
+Project Duration & 6 Months (12 Biweekly Reports) & Start Date & 01/02/2026 \\ \hline
+\fullrow{\itshape Organization Details}
+\fullrow{\bfseries Organization Name}
+\fullrow{Academic Project (MIT, MAHE)}
+\fullrow{Project Repository: Sculpt Monorepo}
+\fullrow{\itshape Supervisor Details}
+\fullrow{\bfseries Supervisor Name}
+\fullrow{Dr. Sandhya Parasnath Dubey}
+\fullrow{School of Computer Engineering, MIT, MAHE, Manipal - 576104}
+Email address & sandhya.dubey@manipal.edu & Phone No (M) & 9886542135 \\ \hline
+\fullrow{\itshape Internal Guide Details}
+\fullrow{\bfseries Faculty Name}
+\fullrow{Dr. Sandhya Parasnath Dubey}
+\fullrow{School of Computer Engineering, MIT, MAHE, Manipal - 576104}
+\fullrow{Email address: sandhya.dubey@manipal.edu}
+\fullrow{\rule{0pt}{0.8cm}}
+\fullrow{\rule{0pt}{0.8cm}}
+\fullrow{\rule{0pt}{0.8cm}}
+\end{tabularx}
+
+\newpage
+
+% =========================
+% Page 3: Activity Log (1-6)
+% =========================
+{\color{red}\small\textbf{Note (delete after reading):} You can compile your report based on the company policies.}
+\vspace{0.25cm}
+\begin{center}{\large\bfseries Activity Log (Days 1-6)}\end{center}
+\begin{tabular}{|p{0.06\textwidth}|p{0.10\textwidth}|p{0.14\textwidth}|p{0.19\textwidth}|p{0.39\textwidth}|}\hline
+\centering\textbf{Sl. No.} & \centering\textbf{Date} & \centering\textbf{Project Activity} & \centering\textbf{Description} & \centering\textbf{Comments} \tabularnewline\hline
+1 & 02/04/26 & Review Screen & Built project image review page structure. &
+Summary of the work done:\newline
+Prepared area for canvas, comments and controls. \\ \hline
+2 & 03/04/26 & Canvas Core & Implemented annotation canvas drawing engine. &
+Summary of the work done:\newline
+Enabled coordinate-based drawing over images. \\ \hline
+3 & 04/04/26 & Tools & Added pencil, line and rectangle tool behavior. &
+Summary of the work done:\newline
+Connected selected tool state to draw actions. \\ \hline
+4 & 05/04/26 & Colors & Implemented color selection in annotation toolbar. &
+Summary of the work done:\newline
+Allowed visual categorization of feedback marks. \\ \hline
+5 & 06/04/26 & Undo/Redo & Built annotation history stack controls. &
+Summary of the work done:\newline
+Enabled iterative corrections while marking images. \\ \hline
+6 & 07/04/26 & Annotation State & Managed annotation arrays and canvas refresh flow. &
+Summary of the work done:\newline
+Kept drawing state consistent between actions. \\ \hline
+\end{tabular}
+
+\newpage
+
+% =========================
+% Page 4: Activity Log (7-15) + Signatures
+% =========================
+\begin{center}{\large\bfseries Activity Log (Days 7-15)}\end{center}
+\begin{tabular}{|p{0.06\textwidth}|p{0.10\textwidth}|p{0.14\textwidth}|p{0.19\textwidth}|p{0.39\textwidth}|}\hline
+7 & 08/04/26 & Footer Integration & Connected annotation footer with comment submission. &
+Summary of the work done:\newline
+Prepared payload to send drawings with message. \\ \hline
+8 & 09/04/26 & Payload Shape & Aligned annotation JSON shape with backend model. &
+Summary of the work done:\newline
+Ensured API accepts and stores annotation data. \\ \hline
+9 & 10/04/26 & Canvas Reset & Implemented clear/reset handling after submit. &
+Summary of the work done:\newline
+Prevented stale drawings from leaking into next comment. \\ \hline
+10 & 11/04/26 & Highlight Hook & Wired highlight callback path from comments to canvas. &
+Summary of the work done:\newline
+Enabled focused visual feedback playback. \\ \hline
+11 & 12/04/26 & Layout Refinement & Optimized canvas and sidebar arrangement. &
+Summary of the work done:\newline
+Improved practical use on regular desktop width. \\ \hline
+12 & 13/04/26 & Type Safety & Updated annotation-related type definitions. &
+Summary of the work done:\newline
+Reduced runtime errors in review page state. \\ \hline
+13 & 14/04/26 & Testing & Executed manual drawing and submit scenarios. &
+Summary of the work done:\newline
+Confirmed annotation persistence in comment flow. \\ \hline
+14 & 15/04/26 & Bug Fix & Fixed coordinate and tool-switch edge cases. &
+Summary of the work done:\newline
+Improved annotation consistency during long sessions. \\ \hline
+15 & 16/04/26 & Sprint Closure & Completed annotation tool milestone. &
+Summary of the work done:\newline
+Image review now supports visual markup workflow. \\ \hline
+\end{tabular}
+\vspace{0.2cm}
+\begin{tabular}{|p{0.48\textwidth}|p{0.48\textwidth}|}\hline
+Signature of Student & Signature of External Guide \\ \hline
+\vspace{0.2cm}\includegraphics[height=2cm]{signature.png}\vspace{0.2cm} & \rule{0pt}{2.6cm} \\ \hline
+\end{tabular}
+
+\end{document}
+

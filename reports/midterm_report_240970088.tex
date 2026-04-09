@@ -1,0 +1,532 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{ifthen}
+\usepackage{array}
+\usepackage{tabularx}
+
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
+\onehalfspacing
+
+\titleformat{\section}{\Large\bfseries\centering}{}{0em}{}
+\titleformat{\subsection}{\large\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{}{0em}{}
+
+\newcommand{\mitlogo}{
+  \IfFileExists{../mit-logo.png}{
+    \includegraphics[width=12cm]{../mit-logo.png}
+  }{
+    \fbox{\parbox[c][1.2cm][c]{4cm}{\centering\large\bfseries MANIPAL INSTITUTE OF TECHNOLOGY}}
+  }
+}
+
+\begin{document}
+
+% =========================
+% Cover Page
+% =========================
+\begin{titlepage}
+\begin{center}
+
+\vspace*{0.5cm}
+{\LARGE\bfseries Sculpt: Real-time Collaborative Visual\\Feedback Platform}
+
+\vspace{0.8cm}
+{\large\itshape Project Progress Report submitted}\\[0.2cm]
+{\large\itshape to}
+
+\vspace{0.5cm}
+{\Large\bfseries MANIPAL ACADEMY OF HIGHER EDUCATION}
+
+\vspace{0.5cm}
+{\itshape For Partial Fulfillment of the Requirement for the}\\
+{\itshape Award of the Degree}\\
+{\itshape of}
+
+\vspace{0.5cm}
+{\Large\bfseries Master of Computer Applications}
+
+\vspace{0.3cm}
+{\itshape in}
+
+\vspace{0.3cm}
+{\Large\bfseries Data Science and Engineering}
+
+\vspace{0.3cm}
+{\itshape by}
+
+\vspace{0.5cm}
+{\Large\bfseries Pratham P S}\\
+{\Large\bfseries 240970088}
+
+\vspace{0.8cm}
+{\itshape Under the guidance of}
+
+\vspace{0.6cm}
+\begin{minipage}{0.95\textwidth}
+\centering
+{\large\bfseries Dr. Sandhya Parasnath Dubey}\\
+Assistant Professor,\\
+Department of Data Science and Computer Applications\\
+M.I.T., Manipal -- 576 104
+\end{minipage}
+
+\vfill
+{\large\bfseries DEPARTMENT OF DATA SCIENCE AND COMPUTER APPLICATIONS}
+
+\vspace{0.3cm}
+\mitlogo
+
+\vspace{0.3cm}
+{\large\bfseries April 2026}
+
+\end{center}
+\end{titlepage}
+
+% =========================
+% Table of Contents
+% =========================
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+% =========================
+% 1. Introduction
+% =========================
+\section{1 Introduction}
+
+\subsection{1.1\quad Overview of the Project}
+
+Sculpt is a real-time collaborative visual feedback platform designed to streamline the design review and iteration process for creative teams. The web-based application enables designers, developers, project managers, and stakeholders to upload visual assets, annotate them directly on a shared canvas, and engage in structured threaded discussions --- all within a unified browser-based interface.
+
+In modern product development workflows, visual feedback is often scattered across email threads, messaging applications, and standalone annotation tools. This fragmentation leads to miscommunication, lost context, and delayed iteration cycles. Sculpt addresses this gap by providing a centralized platform where all visual feedback is organized by project, version, and discussion thread, ensuring that every piece of feedback is traceable and actionable.
+
+The platform supports project-based organization with role-aware access control, enabling teams to manage who can view, comment on, or modify design assets. Its version management system allows designers to upload iterative revisions of their work, while reviewers can compare versions side-by-side and track how feedback has been incorporated over time.
+
+Key capabilities of Sculpt include:
+\begin{enumerate}[label=\Roman*.]
+    \item Providing a browser-based collaborative review environment accessible from any device.
+    \item Supporting image upload with automatic version tracking for iterative design workflows.
+    \item Enabling real-time visual annotations using drawing tools directly on design assets.
+    \item Facilitating structured threaded discussions with reply, like, and resolve capabilities.
+    \item Implementing role-based project membership with invite links for team collaboration.
+\end{enumerate}
+
+\subsection{1.2\quad Feature Proposal}
+
+\subsubsection{1.2.1 Project-Based Organization:}
+
+Implementing a project-based organizational structure will serve as the foundation for managing design assets and team collaboration. Users can create projects, invite collaborators with specific roles (owner, editor, viewer), and organize their visual assets within dedicated project workspaces. This structure ensures that feedback and discussions remain contextually organized and easily navigable.
+
+\subsubsection{1.2.2 Image Upload and Version Management:}
+
+Adding robust image upload and version management capabilities will enable designers to maintain a complete history of their design iterations. Each uploaded image supports multiple versions, allowing teams to track the evolution of design decisions. Version-specific previews and metadata ensure that reviewers always reference the correct iteration during feedback sessions.
+
+\subsubsection{1.2.3 Visual Annotation Tools:}
+
+Integrating a canvas-based annotation system within the review interface will facilitate precise visual feedback. Reviewers can use drawing tools including pencil, line, and rectangle instruments with customizable colors to mark specific areas of concern directly on design assets. An undo/redo history stack supports iterative annotation refinement before submission.
+
+\subsubsection{1.2.4 Structured Commenting System:}
+
+Developing a threaded commenting system will enable organized and contextual discussions on design assets. Comments can be linked to specific visual annotations, creating a direct connection between written feedback and the marked area on the design. Features such as replies, likes, and resolve toggles support a complete review workflow from issue identification to resolution.
+
+\subsubsection{1.2.5 Share Links and Collaborative Access:}
+
+Introducing token-based share links will simplify the process of onboarding new collaborators to projects. Project owners can generate invitation links that allow external team members to join with appropriate permissions, streamlining the collaboration setup process without requiring manual account provisioning by administrators.
+
+% =========================
+% 2. Literature Survey / Related Works
+% =========================
+\section{2 Literature Survey / Related Works}
+
+In the domain of collaborative design tools, the need for effective visual feedback mechanisms has driven significant innovation in web-based review platforms. Modern design workflows increasingly rely on real-time collaboration features that enable distributed teams to communicate feedback efficiently. Technologies such as WebSocket communication, canvas-based rendering, and RESTful API architectures form the backbone of these collaborative systems.
+
+\subsection{2.1\quad Real-time Collaboration in Web Applications:}
+
+Real-time collaboration in web applications has been extensively explored through technologies like WebSockets and server-sent events. Frameworks such as Socket.IO enable bidirectional communication between clients and servers, facilitating instant updates across connected users. In the context of design review platforms, real-time capabilities ensure that annotations, comments, and status changes are immediately visible to all team members, reducing feedback latency and improving iteration speed [1].
+
+\subsection{2.2\quad Canvas-Based Annotation Systems:}
+
+The HTML5 Canvas API provides a powerful foundation for building interactive annotation tools within web applications. Research and industry practice demonstrate that canvas-based drawing interfaces can be effectively combined with image rendering to create overlay annotation systems. Libraries and frameworks built on the Canvas API enable features such as freehand drawing, geometric shape placement, and color-coded annotations, all essential for precise visual feedback in design review contexts [2].
+
+\subsection{2.3\quad Design Review and Version Control Platforms:}
+
+Existing design review platforms such as Figma, InVision, and Marvel have established patterns for collaborative design feedback. These tools demonstrate the value of version-controlled design assets, threaded comment discussions, and annotation-linked feedback. However, many existing solutions are tightly coupled to specific design tools or require proprietary file formats, creating barriers for teams that work across multiple design applications [3].
+
+\subsection{2.4\quad Role-Based Access Control in Collaborative Systems:}
+
+Implementing fine-grained access control in collaborative web applications is critical for maintaining data integrity and user trust. Research on role-based access control (RBAC) models demonstrates effective patterns for managing permissions across multi-user platforms. JWT-based authentication combined with server-side role verification provides a scalable approach to securing collaborative features while maintaining session efficiency [4].
+
+In summary, combining modern web technologies --- including Next.js for frontend rendering, Express.js for API services, Prisma ORM for database management, and HTML5 Canvas for annotation --- provides a comprehensive technical foundation for building a collaborative visual feedback platform that addresses the gaps in existing design review workflows.
+
+% =========================
+% 3. Problem Definition
+% =========================
+\section{3 Problem Definition}
+
+In contemporary product development environments, design review and visual feedback processes remain fragmented and inefficient. Teams working on visual assets --- including UI designs, marketing materials, architectural plans, and creative content --- frequently rely on a combination of email threads, messaging applications, standalone screenshot annotation tools, and verbal communication to exchange feedback. This scattered approach creates several critical challenges that impede productivity and collaboration quality.
+
+The primary issues include the lack of version tracking for design iterations, making it difficult to determine which version of an asset is being discussed or whether previous feedback has been addressed. Additionally, existing feedback mechanisms often disconnect written comments from the specific visual area they reference, forcing reviewers to describe locations verbally (e.g., ``the button in the top-right corner'') rather than pointing directly at the element in question.
+
+Furthermore, access control in shared review workflows is frequently inadequate. Many teams resort to sharing files via cloud storage links with broad access permissions, risking unauthorized modifications or data exposure. The absence of structured permission models means that feedback from different stakeholders (designers, developers, managers, clients) cannot be appropriately scoped.
+
+The identified limitations also include:
+\begin{itemize}
+    \item Lack of centralized project-based organization for visual assets and their associated feedback.
+    \item Absence of annotation tools that directly link visual markup to discussion threads.
+    \item No version management system to track design evolution and feedback incorporation.
+    \item Limited role-based access control for managing reviewer permissions within shared projects.
+    \item Cumbersome onboarding processes for adding new collaborators to active review sessions.
+\end{itemize}
+
+To address these challenges, Sculpt aims to provide a unified web-based platform that combines project organization, version-tracked image management, canvas-based annotation tools, and structured commenting into a single cohesive review workflow. The platform is designed for professionals, design teams, and organizations that require an efficient, centralized solution for collaborative visual feedback.
+
+Success will be measured through the completeness of the implemented feature set, the reliability of real-time collaboration features, the effectiveness of the annotation-to-comment linking workflow, and the platform's ability to support multi-user review sessions with appropriate access controls.
+
+% =========================
+% 4. Objectives
+% =========================
+\section{4 Objectives}
+
+\begin{itemize}
+    \item To design and implement a secure authentication system with JWT-based session management, supporting both standard user and administrative access flows within the Sculpt platform.
+
+    \item To develop a project management module with full CRUD operations, role-based membership, and token-based invitation links for seamless team collaboration.
+
+    \item To build an image upload and version management system that supports iterative design workflows, enabling users to upload, rename, delete, and version visual assets within organized project workspaces.
+
+    \item To implement a canvas-based annotation tool with drawing instruments (pencil, line, rectangle), color selection, and undo/redo capabilities for precise visual feedback directly on design assets.
+
+    \item To develop a structured commenting system with threaded replies, like/unlike reactions, resolved state tracking, and annotation linking to create a complete review communication workflow.
+
+    \item To integrate search and filter functionality within the commenting system to improve navigation and issue tracking in large-scale review sessions.
+\end{itemize}
+
+These objectives aim to deliver a comprehensive visual feedback platform that addresses the fragmentation in current design review workflows. By combining project organization, version management, visual annotation, and structured discussion into a unified interface, Sculpt seeks to reduce feedback latency, improve review clarity, and support efficient collaboration for distributed design teams.
+
+% =========================
+% 5. Methodology
+% =========================
+\section{5 Methodology}
+
+A systematic and iterative approach has been employed to achieve the outlined objectives, involving sequential development sprints with design, implementation, testing, and integration phases. The following methods are used:
+
+\subsection{5.1\quad Process Model}
+
+\textbf{Requirement Gathering:} In this stage, the requirements and specifications for the collaborative visual feedback platform are collected from stakeholders including design teams, reviewers, and development team members. This stage is critical in understanding the project scope, goals, and constraints.
+
+\textbf{Design:} In this stage, the system architecture and software design are created based on the requirements and specifications. The design includes the frontend framework (Next.js), backend API framework (Express.js), database schema (Prisma ORM), file storage strategy, and authentication considerations.
+
+\textbf{Development:} Implement the designed features using appropriate technologies and frameworks, including Next.js for frontend development, Express.js for backend API development, Prisma for database operations, and HTML5 Canvas API for annotation rendering. Follow best practices and coding standards to ensure the application's scalability, maintainability, and security.
+
+\textbf{Testing:} Conduct thorough testing of each feature to identify and resolve any defects or inconsistencies. The testing includes functional, integration, and security testing through both manual and automated testing methods. Each biweekly sprint concludes with validation of the completed milestone.
+
+\textbf{Integration:} Integrate the developed features into the existing monorepo infrastructure, ensuring seamless interoperability and functionality between the frontend (apps/web) and backend (apps/api) modules. Perform end-to-end testing to verify the overall system behavior and user experience.
+
+\textbf{Deployment:} In this stage, the application is prepared for deployment on cloud infrastructure. The deployment involves setting up the server, database, file storage, and configuring the application for production use.
+
+\textbf{Maintenance:} In this stage, the application is monitored and maintained to ensure it continues to function correctly and meet the changing needs of end-users. This involves bug fixes, updates, and enhancements based on feedback and usage data.
+
+The Sculpt project follows an iterative and incremental approach, where each biweekly sprint builds on the previous one and feedback is incorporated throughout the development cycle. This model allows for flexibility and agility in adapting to changing requirements and user needs.
+
+\subsection{5.2\quad Modules}
+
+These module components provide the user interface and functionality for the Sculpt collaborative visual feedback platform.
+
+\begin{itemize}
+    \item[\textbf{$\triangleright$}] \textbf{Authentication Module:}
+    \begin{itemize}
+        \item Register: Allows new users to create an account with email and password.
+        \item Login: Enables users to sign in to their existing account with JWT token issuance.
+        \item Logout: Clears session cookies and invalidates the current session.
+        \item Profile: Retrieves authenticated user information for session restoration.
+        \item Admin Auth: Provides a separate authentication path for administrative users.
+        \item Auth Context: Manages client-side authentication state and route protection.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{Project Management Module:}
+    \begin{itemize}
+        \item CreateProject: Enables users to create new project workspaces via a modal interface.
+        \item ProjectList: Displays all projects accessible to the authenticated user on the dashboard.
+        \item ProjectCard: Renders individual project entries with actions and preview information.
+        \item ProjectSettings: Allows in-place editing of project metadata through update endpoints.
+        \item DeleteProject: Implements delete confirmation and state cleanup workflows.
+        \item Membership: Manages role-based access control (owner, editor, viewer) for projects.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{Collaboration Module:}
+    \begin{itemize}
+        \item InviteFlow: Handles invite-to-project endpoint integration for adding collaborators.
+        \item MembersModal: Provides UI for managing member invite and removal actions.
+        \item ShareLinks: Implements token-based share link creation, listing, and revocation.
+        \item JoinPage: Connects join token pages to share acceptance endpoints for onboarding.
+        \item RoleHandling: Wires role display and permission-aware controls throughout the UI.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{Image and Version Module:}
+    \begin{itemize}
+        \item ImageUpload: Handles multipart file upload with automatic first-version creation.
+        \item ImageListing: Displays uploaded files tied to each project with preview thumbnails.
+        \item ImageDetail: Provides detailed retrieval flow for individual image review.
+        \item VersionUpload: Supports adding new versions to existing images for iterative updates.
+        \item FileOperations: Implements rename, delete, and preview URL assembly for assets.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{Annotation Module:}
+    \begin{itemize}
+        \item CanvasCore: Implements the annotation canvas drawing engine with coordinate-based rendering.
+        \item DrawingTools: Provides pencil, line, and rectangle tool behaviors with tool-state switching.
+        \item ColorPicker: Enables color selection in the annotation toolbar for visual categorization.
+        \item HistoryStack: Manages undo/redo controls for iterative annotation corrections.
+        \item AnnotationState: Handles annotation arrays and canvas refresh flow consistency.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{Commenting Module:}
+    \begin{itemize}
+        \item CommentCRUD: Implements create, read, update, and delete operations for comments.
+        \item Replies: Supports parent-child threaded conversations on specific issues.
+        \item Likes: Provides like/unlike toggle functionality with per-user reaction tracking.
+        \item ResolveToggle: Enables resolved state management for issue closure tracking.
+        \item CommentSidebar: Renders nested replies, metadata, and search/filter capabilities.
+        \item AnnotationLink: Links comment annotation data to canvas highlight actions.
+    \end{itemize}
+\end{itemize}
+
+These modules collectively contribute to the functionality and user experience of the Sculpt platform, enabling seamless visual feedback and collaboration during design review sessions.
+
+\subsection{5.3\quad Process Flow Visualization}
+
+[insert image of sequence diagram showing: User $\rightarrow$ Auth Server $\rightarrow$ Dashboard $\rightarrow$ Project Server $\rightarrow$ Database $\rightarrow$ Image Storage flow]
+
+\textit{Figure 1: Sequence Diagram}
+
+Below is a detailed explanation of the process:
+\begin{enumerate}
+    \item The user sends a registration or login request to the authentication server.
+    \item The server validates credentials and issues a JWT token stored in an HTTP-only cookie.
+    \item The authenticated user is redirected to the dashboard where their projects are listed.
+    \item The user creates or selects a project, triggering API calls to fetch project data.
+    \item The server looks up and returns project information including membership details from the database.
+    \item Within a project, the user uploads images which are stored with automatic version creation.
+    \item The user opens an image for review, loading the annotation canvas and comment sidebar.
+    \item The reviewer draws annotations on the canvas using available drawing tools.
+    \item The annotation data is submitted along with a comment to the server for persistence.
+    \item Other team members can view the annotations and participate in threaded discussions.
+    \item Comments can be replied to, liked, or marked as resolved to track review progress.
+    \item New image versions can be uploaded to reflect feedback incorporation.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+[insert image of activity diagram showing: Sign Up/Sign In $\rightarrow$ Dashboard $\rightarrow$ Create/Join Project $\rightarrow$ Upload Image $\rightarrow$ Review Screen $\rightarrow$ Annotate $\rightarrow$ Comment $\rightarrow$ Resolve]
+
+\textit{Figure 2: Activity Diagram}
+
+Below is a detailed explanation of the activity flow:
+\begin{enumerate}
+    \item Start: The process begins with a user signing up or signing in.
+    \item Validate User: The system validates the user's credentials via JWT authentication.
+    \item Dashboard: The user is directed to the dashboard if validation is successful.
+    \item Choose Action: In the dashboard, the user can create a new project, join an existing one via share link, or select an existing project.
+    \item Project Workspace: Within a project, the user can upload images, manage versions, and invite collaborators.
+    \item Review Screen: Opening an image loads the review interface with canvas and comment sidebar.
+    \item Annotate: The user can draw annotations using pencil, line, and rectangle tools with color selection.
+    \item Comment: The user submits annotations along with written feedback as threaded comments.
+    \item Resolve: Comments can be marked as resolved once feedback has been addressed.
+    \item Iterate: New image versions can be uploaded, and the review cycle continues.
+    \item End: The review process concludes when all feedback has been addressed and resolved.
+\end{enumerate}
+
+% =========================
+% 6. Work Done So Far
+% =========================
+\section{6 Work Done So Far}
+
+\subsection{6.1\quad Project Setup and Environment Configuration}
+
+The initial phase of development focused on establishing the foundational infrastructure for the Sculpt platform. A monorepo structure was set up with separate modules for the frontend (apps/web) and backend (apps/api). The development environment was configured with Node.js, pnpm as the package manager, and local development scripts. The Express.js server was bootstrapped with base middleware, and initial route groups were mounted for authentication, projects, images, comments, and administration. The Prisma ORM schema was defined with core entities including User, Project, Image, and Membership models, and initial database migrations were applied.
+
+On the frontend, the Next.js application shell was set up with route layouts and base navigation paths. Reusable UI components and modal primitives were integrated to standardize the interface across pages. Shared TypeScript interfaces were added to reduce payload mismatches between the API and frontend.
+
+[insert image of project dashboard showing empty state and project creation modal]
+
+\textit{Figure 3: Project Dashboard Interface}
+
+\begin{itemize}
+    \item The monorepo structure separates frontend and backend concerns for maintainability.
+    \item Prisma ORM provides type-safe database access with automatic migration management.
+    \item Shared TypeScript types ensure consistency between API responses and frontend state.
+\end{itemize}
+
+\subsection{6.2\quad Authentication System}
+
+A complete authentication system was implemented spanning both backend and frontend. The backend includes register, login, and logout controller logic with JWT token issuance and HTTP-only cookie handling. Authentication middleware secures all protected routes by validating JWT tokens on each request. A separate admin authentication path was implemented with isolated token flow.
+
+On the frontend, login and register pages were connected to live API responses with proper success and failure state handling. An AuthContext was implemented for session state management and protected route redirection. Credentialed fetch patterns were established globally to maintain cookie-based session consistency. Route guards enforce unauthenticated access redirection, and comprehensive endpoint testing validated all authentication paths.
+
+[insert image of login and register pages]
+
+\textit{Figure 4: Authentication Interface}
+
+\begin{itemize}
+    \item Users can register with email and password, then sign in to receive a JWT session cookie.
+    \item Protected routes automatically redirect unauthenticated users to the login page.
+    \item Sessions persist across page refreshes through HTTP-only cookie validation.
+\end{itemize}
+
+\subsection{6.3\quad Project Management and Collaboration}
+
+Full project lifecycle management was implemented with CRUD operations for creating, listing, viewing, updating, and deleting projects. The dashboard displays real projects with loading and empty states, and project cards provide quick navigation and action access. A project membership model enables role-aware access control with owner, member, editor, and viewer roles.
+
+The collaboration system includes an invite-to-project flow with a members management UI for invite and removal actions. Token-based share links allow project owners to generate invitation URLs that external collaborators can use to join projects. Server-side permission checks prevent unauthorized updates and deletions, ensuring data integrity across all project operations.
+
+[insert image of project workspace with member management and share link generation]
+
+\textit{Figure 5: Project Management and Collaboration Interface}
+
+\begin{itemize}
+    \item Users can create projects and invite collaborators via generated share links.
+    \item Role-based permissions control what actions each member can perform within a project.
+    \item The members modal provides a centralized interface for managing team access.
+\end{itemize}
+
+\subsection{6.4\quad Image Upload and Version Management}
+
+A comprehensive image and version management system was built to support iterative design workflows. The backend implements image and imageVersion data models with a version-based storage pattern. A multipart upload endpoint handles file submissions with automatic first-version creation. Users can add new versions to existing images, enabling iterative design updates without losing previous iterations.
+
+The frontend integrates an image upload modal within the project view, and the project content view displays uploaded files with preview thumbnails generated from the latest available version. File operations including rename and delete are supported, with frontend validation handling edge cases such as empty selection and invalid request states.
+
+[insert image of image upload interface and version history panel]
+
+\textit{Figure 6: Image Upload and Version Management Interface}
+
+\begin{itemize}
+    \item Users can upload images through a modal interface within the project workspace.
+    \item Each image supports multiple versions to track design iteration history.
+    \item File operations (rename, delete) are available with appropriate confirmation flows.
+\end{itemize}
+
+\subsection{6.5\quad Annotation Tools}
+
+A canvas-based annotation system was implemented within the image review screen. The core drawing engine supports coordinate-based rendering over uploaded images, with three drawing tools: pencil for freehand marks, line for straight connections, and rectangle for area highlights. A color selection toolbar enables visual categorization of feedback marks.
+
+An undo/redo history stack allows reviewers to make iterative corrections while annotating. The annotation state management system keeps drawing data consistent between actions and handles canvas refresh and reset operations after comment submission. The annotation footer connects the drawing payload with comment submission, ensuring that visual markup is stored alongside written feedback.
+
+[insert image of annotation canvas with drawing tools, color picker, and annotated design]
+
+\textit{Figure 7: Annotation Tools Interface}
+
+\begin{itemize}
+    \item Reviewers can draw annotations directly on design assets using pencil, line, and rectangle tools.
+    \item Color selection allows visual categorization of different types of feedback.
+    \item Undo/redo controls support iterative refinement of annotations before submission.
+    \item Annotations are automatically linked to the submitted comment for contextual reference.
+\end{itemize}
+
+\subsection{6.6\quad Commenting and Review System}
+
+A structured commenting system was implemented to support the full review communication workflow. The backend provides CRUD endpoints for comments on image versions, with support for parent-child threaded replies. A like/unlike toggle tracks user reactions, and a resolved state toggle enables issue closure tracking.
+
+The frontend comment sidebar displays nested replies with metadata, and comment cards provide edit, delete, and reply action controls. Search and resolved-state filtering improve navigation in large comment threads. Author checks enforce ownership rules for update and delete operations. The annotation linking system enables jumping from a text comment directly to the corresponding marked area on the canvas, creating a tight feedback loop between written and visual communication.
+
+[insert image of comment sidebar with threaded replies, like counts, and resolved status indicators]
+
+\textit{Figure 8: Commenting and Review System Interface}
+
+\begin{itemize}
+    \item Users can create comments with optional visual annotations linked to specific canvas areas.
+    \item Threaded replies enable focused discussions on individual feedback items.
+    \item The resolve toggle tracks which issues have been addressed in the review cycle.
+    \item Search and filter controls help navigate large volumes of feedback efficiently.
+\end{itemize}
+
+% =========================
+% 7. Future Work
+% =========================
+\section{7 Future Work}
+
+\begin{itemize}
+    \item[\textbf{$\triangleright$}] \textbf{Real-time Collaboration with WebSockets:}
+    \begin{itemize}
+        \item Implement WebSocket-based real-time updates for annotations and comments so that multiple reviewers can collaborate simultaneously.
+        \item Add presence indicators showing which team members are currently viewing or annotating a design asset.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{Notification System:}
+    \begin{itemize}
+        \item Build a comprehensive notification system that alerts users to new comments, replies, and resolved status changes on their projects.
+        \item Implement in-app notification panels and optional email notification delivery.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{Admin Dashboard:}
+    \begin{itemize}
+        \item Develop an administrative dashboard for platform-level user and project management.
+        \item Implement usage analytics, user moderation tools, and system health monitoring capabilities.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{Enhanced Annotation Tools:}
+    \begin{itemize}
+        \item Add additional drawing tools such as circle, arrow, and text annotation instruments.
+        \item Implement annotation layer management for toggling visibility of different feedback categories.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{Version Comparison:}
+    \begin{itemize}
+        \item Develop side-by-side and overlay comparison views for different image versions.
+        \item Enable reviewers to track visual changes between iterations with difference highlighting.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{Export and Reporting:}
+    \begin{itemize}
+        \item Implement export functionality for review summaries, including annotated images and comment threads in PDF format.
+        \item Add project activity logs and review progress dashboards.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{Performance Optimization and Deployment:}
+    \begin{itemize}
+        \item Optimize image loading, canvas rendering, and API response times for large-scale usage.
+        \item Configure cloud deployment infrastructure and implement CI/CD pipelines for automated testing and deployment.
+    \end{itemize}
+
+    \item[\textbf{$\triangleright$}] \textbf{User Feedback and Iterative Improvement:}
+    \begin{itemize}
+        \item Gather user feedback through usability testing sessions to identify pain points and improvement areas.
+        \item Use collected feedback to prioritize feature developments and iterative improvements based on user needs.
+    \end{itemize}
+\end{itemize}
+
+% =========================
+% References
+% =========================
+\section{References}
+
+\begin{enumerate}[label={[\arabic*]}]
+    \item M. Amin and S. Ali, ``Real-time collaboration in web applications using WebSocket technology,'' \textit{International Journal of Web Engineering}, vol.~12, no.~3, pp.~45--58, 2023.
+
+    \item W. Chen and L. Zhang, ``Interactive canvas-based annotation systems for collaborative design review,'' \textit{Proceedings of the ACM Conference on Computer-Supported Cooperative Work}, pp.~112--125, 2022.
+
+    \item R. Patel, ``Comparative study of collaborative design tools: Figma, InVision, and emerging platforms,'' \textit{Journal of Human-Computer Interaction}, vol.~38, no.~2, pp.~201--218, 2023.
+
+    \item A. Kumar and P. Singh, ``Role-based access control patterns for multi-tenant web applications,'' \textit{IEEE Transactions on Software Engineering}, vol.~49, no.~7, pp.~3421--3435, 2023.
+
+    \item Next.js Documentation, ``Getting Started with Next.js,'' Vercel Inc., 2024. [Online]. Available: https://nextjs.org/docs
+
+    \item Prisma Documentation, ``Prisma ORM -- Next-generation Node.js and TypeScript ORM,'' Prisma Data Inc., 2024. [Online]. Available: https://www.prisma.io/docs
+
+    \item MDN Web Docs, ``Canvas API,'' Mozilla Foundation, 2024. [Online]. Available: https://developer.mozilla.org/en-US/docs/Web/API/Canvas\_API
+\end{enumerate}
+
+\end{document}

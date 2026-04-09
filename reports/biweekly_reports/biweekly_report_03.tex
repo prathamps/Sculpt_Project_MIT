@@ -1,0 +1,161 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{ifthen}
+\usepackage{setspace}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\mitlogo}{\IfFileExists{mit-logo.png}{\includegraphics[width=15cm]{mit-logo.png}}{\fbox{\parbox[c][1.2cm][c]{1.8cm}{\centering MIT}}}}
+\newcommand{\fullrow}[1]{\multicolumn{4}{|>{\raggedright\arraybackslash}p{\dimexpr\textwidth-2\tabcolsep-2\arrayrulewidth\relax}|}{#1} \\ \hline}
+\begin{document}
+
+% =========================
+% Page 1: Cover Page
+% =========================
+\begin{center}
+  \vspace*{1.2cm}
+  \mitlogo
+
+ 
+
+  \vspace{1.1cm}
+  {\large\bfseries MCA 5291 PROJECT WORK \& PRACTICE SCHOOL}
+
+  \vspace{1.2cm}
+  {\LARGE\bfseries Sculpt: Real-time Collaborative Visual\\Feedback Platform}
+
+  \vspace{1.2cm}
+  {\Large Biweekly Report}
+
+  \vspace{0.6cm}
+  {\bfseries SUBMITTED BY}
+
+  \vspace{0.35cm}
+  {\Large\bfseries Pratham P S}\\
+  {\Large\bfseries (240970088)}
+
+  \vspace{1.1cm}
+  {\itshape Under the Guidance of:}
+
+  \vspace{0.35cm}
+  {\large\bfseries Dr. Sandhya Parasnath Dubey}\\
+  {\large Assistant Professor}\\
+  {\large School of Computer Engineering}\\
+  {\large Manipal Institute of Technology, MAHE, Manipal}
+
+  \vfill
+  {\Large\bfseries DEPARTMENT OF DATA SCIENCE AND COMPUTER APPLICATIONS}
+\end{center}
+
+\newpage
+
+% =========================
+% Page 2: Project Details
+% =========================
+\begin{center}{\Large\bfseries Project Details}\end{center}
+\vspace{0.25cm}
+\begin{tabularx}{\textwidth}{|p{0.15\textwidth}|X|p{0.13\textwidth}|X|}\hline
+\fullrow{\itshape Student Details}
+\fullrow{\bfseries Student Name}
+Register Number & 240970088 & Section / Roll No. & MCA \\ \hline
+Email Address & pratham11.mitmpl2024@learner.manipal.edu & Phone No (M) & 9480225348 \\ \hline
+\fullrow{\itshape Project Details}
+\fullrow{\bfseries Project Title}
+Project Duration & 6 Months (12 Biweekly Reports) & Start Date & 01/02/2026 \\ \hline
+\fullrow{\itshape Organization Details}
+\fullrow{\bfseries Organization Name}
+\fullrow{Academic Project (MIT, MAHE)}
+\fullrow{Project Repository: Sculpt Monorepo}
+\fullrow{\itshape Supervisor Details}
+\fullrow{\bfseries Supervisor Name}
+\fullrow{Dr. Sandhya Parasnath Dubey}
+\fullrow{School of Computer Engineering, MIT, MAHE, Manipal - 576104}
+Email address & sandhya.dubey@manipal.edu & Phone No (M) & 9886542135 \\ \hline
+\fullrow{\itshape Internal Guide Details}
+\fullrow{\bfseries Faculty Name}
+\fullrow{Dr. Sandhya Parasnath Dubey}
+\fullrow{School of Computer Engineering, MIT, MAHE, Manipal - 576104}
+\fullrow{Email address: sandhya.dubey@manipal.edu}
+\fullrow{\rule{0pt}{0.8cm}}
+\fullrow{\rule{0pt}{0.8cm}}
+\fullrow{\rule{0pt}{0.8cm}}
+\end{tabularx}
+
+\newpage
+
+% =========================
+% Page 3: Activity Log (1-6)
+% =========================
+{\color{red}\small\textbf{Note (delete after reading):} You can compile your report based on the company policies.}
+\vspace{0.25cm}
+\begin{center}{\large\bfseries Activity Log (Days 1-6)}\end{center}
+\begin{tabular}{|p{0.06\textwidth}|p{0.10\textwidth}|p{0.14\textwidth}|p{0.19\textwidth}|p{0.39\textwidth}|}\hline
+\centering\textbf{Sl. No.} & \centering\textbf{Date} & \centering\textbf{Project Activity} & \centering\textbf{Description} & \centering\textbf{Comments} \tabularnewline\hline
+1 & 03/03/26 & Project API & Implemented create, list, get, update and delete services. &
+Summary of the work done:\newline
+Completed core project CRUD backend. \\ \hline
+2 & 04/03/26 & Dashboard Data & Connected dashboard project grid to API list endpoint. &
+Summary of the work done:\newline
+Displayed real projects with loading and empty states. \\ \hline
+3 & 05/03/26 & Project Card & Built project cards with actions and previews. &
+Summary of the work done:\newline
+Enabled quick navigation and project operations. \\ \hline
+4 & 06/03/26 & Project Update & Wired project settings modal to update endpoint. &
+Summary of the work done:\newline
+Allowed in-place project metadata edits. \\ \hline
+5 & 07/03/26 & Project Delete & Implemented delete confirmation and cleanup flow. &
+Summary of the work done:\newline
+Removed projects and refreshed state after deletion. \\ \hline
+6 & 08/03/26 & Membership & Built project membership model usage in services. &
+Summary of the work done:\newline
+Enabled role-aware project access control. \\ \hline
+\end{tabular}
+
+\newpage
+
+% =========================
+% Page 4: Activity Log (7-15) + Signatures
+% =========================
+\begin{center}{\large\bfseries Activity Log (Days 7-15)}\end{center}
+\begin{tabular}{|p{0.06\textwidth}|p{0.10\textwidth}|p{0.14\textwidth}|p{0.19\textwidth}|p{0.39\textwidth}|}\hline
+7 & 09/03/26 & Invite Flow & Implemented invite-to-project endpoint integration. &
+Summary of the work done:\newline
+Allowed adding collaborators to existing projects. \\ \hline
+8 & 10/03/26 & Members Modal & Built members management UI for invite/remove actions. &
+Summary of the work done:\newline
+Connected member operations to backend routes. \\ \hline
+9 & 11/03/26 & Role Handling & Wired role display and permission-aware controls. &
+Summary of the work done:\newline
+Kept owner/member/editor/viewer behavior consistent. \\ \hline
+10 & 12/03/26 & Share Links API & Implemented share-link create/list/revoke endpoints. &
+Summary of the work done:\newline
+Added token-based external access workflow. \\ \hline
+11 & 13/03/26 & Join Page & Connected join token page to share acceptance endpoint. &
+Summary of the work done:\newline
+Enabled collaborator onboarding by link. \\ \hline
+12 & 14/03/26 & Permission Checks & Added server-side checks for project operations. &
+Summary of the work done:\newline
+Prevented unauthorized updates and deletions. \\ \hline
+13 & 15/03/26 & UI Polish & Improved dashboard project interaction states. &
+Summary of the work done:\newline
+Refined action flow for practical daily usage. \\ \hline
+14 & 16/03/26 & Integration Test & Tested owner and member project visibility paths. &
+Summary of the work done:\newline
+Validated role-based listing correctness. \\ \hline
+15 & 17/03/26 & Sprint Closure & Completed project management milestone. &
+Summary of the work done:\newline
+Project lifecycle now fully functional. \\ \hline
+\end{tabular}
+\vspace{0.2cm}
+\begin{tabular}{|p{0.48\textwidth}|p{0.48\textwidth}|}\hline
+Signature of Student & Signature of External Guide \\ \hline
+\vspace{0.2cm}\includegraphics[height=2cm]{signature.png}\vspace{0.2cm} & \rule{0pt}{2.6cm} \\ \hline
+\end{tabular}
+
+\end{document}
+

@@ -1,0 +1,161 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{ifthen}
+\usepackage{setspace}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\mitlogo}{\IfFileExists{mit-logo.png}{\includegraphics[width=15cm]{mit-logo.png}}{\fbox{\parbox[c][1.2cm][c]{1.8cm}{\centering MIT}}}}
+\newcommand{\fullrow}[1]{\multicolumn{4}{|>{\raggedright\arraybackslash}p{\dimexpr\textwidth-2\tabcolsep-2\arrayrulewidth\relax}|}{#1} \\ \hline}
+\begin{document}
+
+% =========================
+% Page 1: Cover Page
+% =========================
+\begin{center}
+  \vspace*{1.2cm}
+  \mitlogo
+
+ 
+
+  \vspace{1.1cm}
+  {\large\bfseries MCA 5291 PROJECT WORK \& PRACTICE SCHOOL}
+
+  \vspace{1.2cm}
+  {\LARGE\bfseries Sculpt: Real-time Collaborative Visual\\Feedback Platform}
+
+  \vspace{1.2cm}
+  {\Large Biweekly Report}
+
+  \vspace{0.6cm}
+  {\bfseries SUBMITTED BY}
+
+  \vspace{0.35cm}
+  {\Large\bfseries Pratham P S}\\
+  {\Large\bfseries (240970088)}
+
+  \vspace{1.1cm}
+  {\itshape Under the Guidance of:}
+
+  \vspace{0.35cm}
+  {\large\bfseries Dr. Sandhya Parasnath Dubey}\\
+  {\large Assistant Professor}\\
+  {\large School of Computer Engineering}\\
+  {\large Manipal Institute of Technology, MAHE, Manipal}
+
+  \vfill
+  {\Large\bfseries DEPARTMENT OF DATA SCIENCE AND COMPUTER APPLICATIONS}
+\end{center}
+
+\newpage
+
+% =========================
+% Page 2: Project Details
+% =========================
+\begin{center}{\Large\bfseries Project Details}\end{center}
+\vspace{0.25cm}
+\begin{tabularx}{\textwidth}{|p{0.15\textwidth}|X|p{0.13\textwidth}|X|}\hline
+\fullrow{\itshape Student Details}
+\fullrow{\bfseries Student Name}
+Register Number & 240970088 & Section / Roll No. & MCA \\ \hline
+Email Address & pratham11.mitmpl2024@learner.manipal.edu & Phone No (M) & 9480225348 \\ \hline
+\fullrow{\itshape Project Details}
+\fullrow{\bfseries Project Title}
+Project Duration & 6 Months (12 Biweekly Reports) & Start Date & 01/02/2026 \\ \hline
+\fullrow{\itshape Organization Details}
+\fullrow{\bfseries Organization Name}
+\fullrow{Academic Project (MIT, MAHE)}
+\fullrow{Project Repository: Sculpt Monorepo}
+\fullrow{\itshape Supervisor Details}
+\fullrow{\bfseries Supervisor Name}
+\fullrow{Dr. Sandhya Parasnath Dubey}
+\fullrow{School of Computer Engineering, MIT, MAHE, Manipal - 576104}
+Email address & sandhya.dubey@manipal.edu & Phone No (M) & 9886542135 \\ \hline
+\fullrow{\itshape Internal Guide Details}
+\fullrow{\bfseries Faculty Name}
+\fullrow{Dr. Sandhya Parasnath Dubey}
+\fullrow{School of Computer Engineering, MIT, MAHE, Manipal - 576104}
+\fullrow{Email address: sandhya.dubey@manipal.edu}
+\fullrow{\rule{0pt}{0.8cm}}
+\fullrow{\rule{0pt}{0.8cm}}
+\fullrow{\rule{0pt}{0.8cm}}
+\end{tabularx}
+
+\newpage
+
+% =========================
+% Page 3: Activity Log (1-6)
+% =========================
+{\color{red}\small\textbf{Note (delete after reading):} You can compile your report based on the company policies.}
+\vspace{0.25cm}
+\begin{center}{\large\bfseries Activity Log (Days 1-6)}\end{center}
+\begin{tabular}{|p{0.06\textwidth}|p{0.10\textwidth}|p{0.14\textwidth}|p{0.19\textwidth}|p{0.39\textwidth}|}\hline
+\centering\textbf{Sl. No.} & \centering\textbf{Date} & \centering\textbf{Project Activity} & \centering\textbf{Description} & \centering\textbf{Comments} \tabularnewline\hline
+1 & 18/03/26 & Image Models & Implemented image and imageVersion data workflow. &
+Summary of the work done:\newline
+Enabled version-based storage pattern. \\ \hline
+2 & 19/03/26 & Upload API & Built project image upload endpoint with multipart handling. &
+Summary of the work done:\newline
+Created first version automatically on upload. \\ \hline
+3 & 20/03/26 & Upload UI & Integrated image upload modal in project view. &
+Summary of the work done:\newline
+Enabled selecting and submitting files from frontend. \\ \hline
+4 & 21/03/26 & Image Listing & Connected project content view to uploaded image data. &
+Summary of the work done:\newline
+Displayed files tied to each project. \\ \hline
+5 & 22/03/26 & Image Detail & Built image detail retrieval flow in API and UI. &
+Summary of the work done:\newline
+Enabled opening a file for deeper review. \\ \hline
+6 & 23/03/26 & Version Upload & Implemented add-new-version endpoint for existing images. &
+Summary of the work done:\newline
+Supported iterative design updates. \\ \hline
+\end{tabular}
+
+\newpage
+
+% =========================
+% Page 4: Activity Log (7-15) + Signatures
+% =========================
+\begin{center}{\large\bfseries Activity Log (Days 7-15)}\end{center}
+\begin{tabular}{|p{0.06\textwidth}|p{0.10\textwidth}|p{0.14\textwidth}|p{0.19\textwidth}|p{0.39\textwidth}|}\hline
+7 & 24/03/26 & Version UI & Connected version upload mode in modal with single-file rule. &
+Summary of the work done:\newline
+Ensured correct UX for version addition. \\ \hline
+8 & 25/03/26 & Rename File & Implemented rename file action and API integration. &
+Summary of the work done:\newline
+Allowed updating image names without re-upload. \\ \hline
+9 & 26/03/26 & Delete File & Wired delete file operation in project context. &
+Summary of the work done:\newline
+Removed obsolete images from project workspace. \\ \hline
+10 & 27/03/26 & Preview URLs & Built reliable URL assembly for version previews. &
+Summary of the work done:\newline
+Displayed latest available version thumbnails. \\ \hline
+11 & 28/03/26 & Service Logic & Completed backend service methods for version operations. &
+Summary of the work done:\newline
+Covered fetch, update and remove version cases. \\ \hline
+12 & 29/03/26 & Validation & Added frontend validation for upload edge cases. &
+Summary of the work done:\newline
+Handled empty selection and invalid request states. \\ \hline
+13 & 30/03/26 & Integration Test & Ran upload, versioning and delete workflow tests. &
+Summary of the work done:\newline
+Confirmed full image lifecycle behavior. \\ \hline
+14 & 31/03/26 & Bug Fix & Fixed early URL and version ordering issues. &
+Summary of the work done:\newline
+Stabilized image display across cards and lists. \\ \hline
+15 & 01/04/26 & Sprint Closure & Finished file and version management milestone. &
+Summary of the work done:\newline
+Ready for annotation and review tooling. \\ \hline
+\end{tabular}
+\vspace{0.2cm}
+\begin{tabular}{|p{0.48\textwidth}|p{0.48\textwidth}|}\hline
+Signature of Student & Signature of External Guide \\ \hline
+\vspace{0.2cm}\includegraphics[height=2cm]{signature.png}\vspace{0.2cm} & \rule{0pt}{2.6cm} \\ \hline
+\end{tabular}
+
+\end{document}
+
